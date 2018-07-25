@@ -1,0 +1,613 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A03D2CD20893DD700416ABF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03D2CC20893DD700416ABF /* CustomTextField.swift */; };
+		9A64E9CD208AC7140008720D /* ServerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A64E9CC208AC7140008720D /* ServerSelectionViewController.swift */; };
+		9A64E9CF208B93E70008720D /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A64E9CE208B93E70008720D /* ServerCell.swift */; };
+		9A655C0A20B0BAB50005C97E /* RemoteBackendServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A655C0920B0BAB50005C97E /* RemoteBackendServiceManager.swift */; };
+		9AC358E1207D10660011FA3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC358E0207D10660011FA3C /* AppDelegate.swift */; };
+		9AC358E3207D10660011FA3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC358E2207D10660011FA3C /* ViewController.swift */; };
+		9AC358E6207D10660011FA3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC358E4207D10660011FA3C /* Main.storyboard */; };
+		9AC358E8207D10670011FA3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC358E7207D10670011FA3C /* Assets.xcassets */; };
+		9AC358EB207D10670011FA3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC358E9207D10670011FA3C /* LaunchScreen.storyboard */; };
+		9AC358F6207D10670011FA3C /* MacmoteRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC358F5207D10670011FA3C /* MacmoteRemoteTests.swift */; };
+		9AC35901207D10670011FA3C /* MacmoteRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC35900207D10670011FA3C /* MacmoteRemoteUITests.swift */; };
+		9AC3590F207D10CF0011FA3C /* RemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC3590E207D10CF0011FA3C /* RemoteServiceManager.swift */; };
+		9ACF267B2086C62E00829533 /* UICustomGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF267A2086C62E00829533 /* UICustomGestureRecognizer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9AC358F2207D10670011FA3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AC358D5207D10660011FA3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AC358DC207D10660011FA3C;
+			remoteInfo = MacmoteRemote;
+		};
+		9AC358FD207D10670011FA3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AC358D5207D10660011FA3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AC358DC207D10660011FA3C;
+			remoteInfo = MacmoteRemote;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9A03D2CC20893DD700416ABF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		9A64E9CC208AC7140008720D /* ServerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSelectionViewController.swift; sourceTree = "<group>"; };
+		9A64E9CE208B93E70008720D /* ServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
+		9A655C0920B0BAB50005C97E /* RemoteBackendServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBackendServiceManager.swift; sourceTree = "<group>"; };
+		9AC358DD207D10660011FA3C /* MacmoteRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacmoteRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AC358E0207D10660011FA3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9AC358E2207D10660011FA3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9AC358E5207D10660011FA3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9AC358E7207D10670011FA3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9AC358EA207D10670011FA3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9AC358EC207D10670011FA3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AC358F1207D10670011FA3C /* MacmoteRemoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacmoteRemoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AC358F5207D10670011FA3C /* MacmoteRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacmoteRemoteTests.swift; sourceTree = "<group>"; };
+		9AC358F7207D10670011FA3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AC358FC207D10670011FA3C /* MacmoteRemoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacmoteRemoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AC35900207D10670011FA3C /* MacmoteRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacmoteRemoteUITests.swift; sourceTree = "<group>"; };
+		9AC35902207D10670011FA3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AC3590E207D10CF0011FA3C /* RemoteServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteServiceManager.swift; sourceTree = "<group>"; };
+		9ACF267A2086C62E00829533 /* UICustomGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomGestureRecognizer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9AC358DA207D10660011FA3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AC358EE207D10670011FA3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AC358F9207D10670011FA3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9AC358D4207D10660011FA3C = {
+			isa = PBXGroup;
+			children = (
+				9AC358DF207D10660011FA3C /* MacmoteRemote */,
+				9AC358F4207D10670011FA3C /* MacmoteRemoteTests */,
+				9AC358FF207D10670011FA3C /* MacmoteRemoteUITests */,
+				9AC358DE207D10660011FA3C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9AC358DE207D10660011FA3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AC358DD207D10660011FA3C /* MacmoteRemote.app */,
+				9AC358F1207D10670011FA3C /* MacmoteRemoteTests.xctest */,
+				9AC358FC207D10670011FA3C /* MacmoteRemoteUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9AC358DF207D10660011FA3C /* MacmoteRemote */ = {
+			isa = PBXGroup;
+			children = (
+				9AC358E0207D10660011FA3C /* AppDelegate.swift */,
+				9AC358E2207D10660011FA3C /* ViewController.swift */,
+				9A03D2CC20893DD700416ABF /* CustomTextField.swift */,
+				9AC358E4207D10660011FA3C /* Main.storyboard */,
+				9A64E9CC208AC7140008720D /* ServerSelectionViewController.swift */,
+				9A64E9CE208B93E70008720D /* ServerCell.swift */,
+				9ACF267A2086C62E00829533 /* UICustomGestureRecognizer.swift */,
+				9AC358E7207D10670011FA3C /* Assets.xcassets */,
+				9AC3590E207D10CF0011FA3C /* RemoteServiceManager.swift */,
+				9A655C0920B0BAB50005C97E /* RemoteBackendServiceManager.swift */,
+				9AC358E9207D10670011FA3C /* LaunchScreen.storyboard */,
+				9AC358EC207D10670011FA3C /* Info.plist */,
+			);
+			path = MacmoteRemote;
+			sourceTree = "<group>";
+		};
+		9AC358F4207D10670011FA3C /* MacmoteRemoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				9AC358F5207D10670011FA3C /* MacmoteRemoteTests.swift */,
+				9AC358F7207D10670011FA3C /* Info.plist */,
+			);
+			path = MacmoteRemoteTests;
+			sourceTree = "<group>";
+		};
+		9AC358FF207D10670011FA3C /* MacmoteRemoteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9AC35900207D10670011FA3C /* MacmoteRemoteUITests.swift */,
+				9AC35902207D10670011FA3C /* Info.plist */,
+			);
+			path = MacmoteRemoteUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9AC358DC207D10660011FA3C /* MacmoteRemote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AC35905207D10670011FA3C /* Build configuration list for PBXNativeTarget "MacmoteRemote" */;
+			buildPhases = (
+				9AC358D9207D10660011FA3C /* Sources */,
+				9AC358DA207D10660011FA3C /* Frameworks */,
+				9AC358DB207D10660011FA3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacmoteRemote;
+			productName = MacmoteRemote;
+			productReference = 9AC358DD207D10660011FA3C /* MacmoteRemote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9AC358F0207D10670011FA3C /* MacmoteRemoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AC35908207D10670011FA3C /* Build configuration list for PBXNativeTarget "MacmoteRemoteTests" */;
+			buildPhases = (
+				9AC358ED207D10670011FA3C /* Sources */,
+				9AC358EE207D10670011FA3C /* Frameworks */,
+				9AC358EF207D10670011FA3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9AC358F3207D10670011FA3C /* PBXTargetDependency */,
+			);
+			name = MacmoteRemoteTests;
+			productName = MacmoteRemoteTests;
+			productReference = 9AC358F1207D10670011FA3C /* MacmoteRemoteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9AC358FB207D10670011FA3C /* MacmoteRemoteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AC3590B207D10670011FA3C /* Build configuration list for PBXNativeTarget "MacmoteRemoteUITests" */;
+			buildPhases = (
+				9AC358F8207D10670011FA3C /* Sources */,
+				9AC358F9207D10670011FA3C /* Frameworks */,
+				9AC358FA207D10670011FA3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9AC358FE207D10670011FA3C /* PBXTargetDependency */,
+			);
+			name = MacmoteRemoteUITests;
+			productName = MacmoteRemoteUITests;
+			productReference = 9AC358FC207D10670011FA3C /* MacmoteRemoteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9AC358D5207D10660011FA3C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Griffin Prechter";
+				TargetAttributes = {
+					9AC358DC207D10660011FA3C = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					9AC358F0207D10670011FA3C = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 9AC358DC207D10660011FA3C;
+					};
+					9AC358FB207D10670011FA3C = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 9AC358DC207D10660011FA3C;
+					};
+				};
+			};
+			buildConfigurationList = 9AC358D8207D10660011FA3C /* Build configuration list for PBXProject "MacmoteRemote" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9AC358D4207D10660011FA3C;
+			productRefGroup = 9AC358DE207D10660011FA3C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9AC358DC207D10660011FA3C /* MacmoteRemote */,
+				9AC358F0207D10670011FA3C /* MacmoteRemoteTests */,
+				9AC358FB207D10670011FA3C /* MacmoteRemoteUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9AC358DB207D10660011FA3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AC358EB207D10670011FA3C /* LaunchScreen.storyboard in Resources */,
+				9AC358E8207D10670011FA3C /* Assets.xcassets in Resources */,
+				9AC358E6207D10660011FA3C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AC358EF207D10670011FA3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AC358FA207D10670011FA3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9AC358D9207D10660011FA3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AC358E3207D10660011FA3C /* ViewController.swift in Sources */,
+				9AC3590F207D10CF0011FA3C /* RemoteServiceManager.swift in Sources */,
+				9ACF267B2086C62E00829533 /* UICustomGestureRecognizer.swift in Sources */,
+				9AC358E1207D10660011FA3C /* AppDelegate.swift in Sources */,
+				9A655C0A20B0BAB50005C97E /* RemoteBackendServiceManager.swift in Sources */,
+				9A64E9CD208AC7140008720D /* ServerSelectionViewController.swift in Sources */,
+				9A64E9CF208B93E70008720D /* ServerCell.swift in Sources */,
+				9A03D2CD20893DD700416ABF /* CustomTextField.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AC358ED207D10670011FA3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AC358F6207D10670011FA3C /* MacmoteRemoteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AC358F8207D10670011FA3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AC35901207D10670011FA3C /* MacmoteRemoteUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9AC358F3207D10670011FA3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AC358DC207D10660011FA3C /* MacmoteRemote */;
+			targetProxy = 9AC358F2207D10670011FA3C /* PBXContainerItemProxy */;
+		};
+		9AC358FE207D10670011FA3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AC358DC207D10660011FA3C /* MacmoteRemote */;
+			targetProxy = 9AC358FD207D10670011FA3C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9AC358E4207D10660011FA3C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AC358E5207D10660011FA3C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9AC358E9207D10670011FA3C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AC358EA207D10670011FA3C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9AC35903207D10670011FA3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9AC35904207D10670011FA3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9AC35906207D10670011FA3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8RQPS83LR8;
+				INFOPLIST_FILE = MacmoteRemote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gp.MacmoteRemote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9AC35907207D10670011FA3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8RQPS83LR8;
+				INFOPLIST_FILE = MacmoteRemote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gp.MacmoteRemote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9AC35909207D10670011FA3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8RQPS83LR8;
+				INFOPLIST_FILE = MacmoteRemoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gp.MacmoteRemoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacmoteRemote.app/MacmoteRemote";
+			};
+			name = Debug;
+		};
+		9AC3590A207D10670011FA3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8RQPS83LR8;
+				INFOPLIST_FILE = MacmoteRemoteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gp.MacmoteRemoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacmoteRemote.app/MacmoteRemote";
+			};
+			name = Release;
+		};
+		9AC3590C207D10670011FA3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8RQPS83LR8;
+				INFOPLIST_FILE = MacmoteRemoteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gp.MacmoteRemoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MacmoteRemote;
+			};
+			name = Debug;
+		};
+		9AC3590D207D10670011FA3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8RQPS83LR8;
+				INFOPLIST_FILE = MacmoteRemoteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = gp.MacmoteRemoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MacmoteRemote;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9AC358D8207D10660011FA3C /* Build configuration list for PBXProject "MacmoteRemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AC35903207D10670011FA3C /* Debug */,
+				9AC35904207D10670011FA3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AC35905207D10670011FA3C /* Build configuration list for PBXNativeTarget "MacmoteRemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AC35906207D10670011FA3C /* Debug */,
+				9AC35907207D10670011FA3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AC35908207D10670011FA3C /* Build configuration list for PBXNativeTarget "MacmoteRemoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AC35909207D10670011FA3C /* Debug */,
+				9AC3590A207D10670011FA3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AC3590B207D10670011FA3C /* Build configuration list for PBXNativeTarget "MacmoteRemoteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AC3590C207D10670011FA3C /* Debug */,
+				9AC3590D207D10670011FA3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9AC358D5207D10660011FA3C /* Project object */;
+}

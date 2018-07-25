@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AtW-fc-aCW">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Server Selection View Controller-->
+        <scene sceneID="RYf-wh-gGZ">
+            <objects>
+                <viewController id="AtW-fc-aCW" customClass="ServerSelectionViewController" customModule="MacmoteRemote" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lr2-by-XHO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A8X-T3-hM3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="677"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="default" id="YEO-iN-ijg" customClass="ServerCell" customModule="MacmoteRemote" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YEO-iN-ijg" id="ZCV-RA-Kjq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kny-3A-PYr">
+                                                    <rect key="frame" x="0.0" y="-25" width="375" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pue-aZ-6tT">
+                                                    <rect key="frame" x="15" y="11" width="345" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="desktopImage" destination="Kny-3A-PYr" id="6b6-hH-6wS"/>
+                                            <outlet property="serverNameLabel" destination="Pue-aZ-6tT" id="05Q-HO-3no"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0jd-0e-2ZX"/>
+                    </view>
+                    <connections>
+                        <outlet property="peerTable" destination="A8X-T3-hM3" id="gjt-Cb-qqI"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="presentMouse" id="qPc-IL-jai"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6MT-kv-sZu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-748" y="98.50074962518741"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MacmoteRemote" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Looking for a Server..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ync-tn-FKv">
+                                <rect key="frame" x="0.0" y="337" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uPa-9c-qmI" customClass="CustomTextField" customModule="MacmoteRemote" customModuleProvider="target">
+                                <rect key="frame" x="258" y="442" width="20" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e39-OB-RGR">
+                                <rect key="frame" x="168" y="366" width="38" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <state key="normal" title="⌨️"/>
+                                <connections>
+                                    <action selector="keyboardPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="62I-8b-2Ki"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="e39-OB-RGR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3Bw-Zv-2Mv"/>
+                            <constraint firstItem="ync-tn-FKv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="YV4-pJ-9be"/>
+                            <constraint firstItem="ync-tn-FKv" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="cTX-SB-aSS"/>
+                            <constraint firstItem="e39-OB-RGR" firstAttribute="top" secondItem="ync-tn-FKv" secondAttribute="bottom" constant="8" id="oia-pA-QTR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="oGg-UF-NdH" appends="YES" id="lqy-PZ-dHu"/>
+                            <outletCollection property="gestureRecognizers" destination="m3T-Zi-V0d" appends="YES" id="XBW-oO-qKu"/>
+                            <outletCollection property="gestureRecognizers" destination="PVx-DY-6vF" appends="YES" id="eob-0X-ZNP"/>
+                            <outletCollection property="gestureRecognizers" destination="j7I-jb-Wiu" appends="YES" id="TYe-rV-i44"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="gestureRec" destination="U2L-UN-MjB" id="8oh-HE-04T"/>
+                        <outlet property="keyboard" destination="uPa-9c-qmI" id="rcD-aw-Dsf"/>
+                        <outlet property="mediumPress" destination="j7I-jb-Wiu" id="cJx-Px-bkc"/>
+                        <outlet property="panSpace" destination="oGg-UF-NdH" id="QKo-ed-svw"/>
+                        <outlet property="peersLabel" destination="ync-tn-FKv" id="bA8-BU-SvE"/>
+                        <outlet property="tapOnce" destination="m3T-Zi-V0d" id="NJf-Ac-UhX"/>
+                        <outlet property="tapTwice" destination="PVx-DY-6vF" id="Q7K-Fb-y48"/>
+                        <segue destination="AtW-fc-aCW" kind="show" identifier="toServerSelector" id="iuW-QI-vRV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="oGg-UF-NdH">
+                    <connections>
+                        <action selector="panned:" destination="BYZ-38-t0r" id="ze9-xL-ju2"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer id="m3T-Zi-V0d">
+                    <connections>
+                        <action selector="tapped:" destination="BYZ-38-t0r" id="oo4-r5-Wbe"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="PVx-DY-6vF">
+                    <connections>
+                        <action selector="tappedTwice:" destination="BYZ-38-t0r" id="hk5-Ts-kYz"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pongPressGestureRecognizer cancelsTouchesInView="NO" delaysTouchesEnded="NO" allowableMovement="10" minimumPressDuration="0.59999999999999998" id="j7I-jb-Wiu">
+                    <connections>
+                        <action selector="longTouch:" destination="BYZ-38-t0r" id="BRy-LH-IM5"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <gestureRecognizer id="U2L-UN-MjB" customClass="UICustomGestureRecognizer" customModule="MacmoteRemote" customModuleProvider="target">
+                    <connections>
+                        <action selector="gestured:" destination="BYZ-38-t0r" id="BHj-cE-5t0"/>
+                    </connections>
+                </gestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="37.600000000000001" y="84.107946026986511"/>
+        </scene>
+    </scenes>
+</document>

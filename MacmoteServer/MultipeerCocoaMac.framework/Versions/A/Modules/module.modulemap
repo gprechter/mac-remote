@@ -1,0 +1,10 @@
+framework module MultipeerCocoaMac {
+  umbrella header "MultipeerCocoaMac.h"
+
+  export *
+  module * { export * }
+}
+
+module MultipeerCocoaMac.Swift {
+    header "MultipeerCocoaMac-Swift.h"
+}
