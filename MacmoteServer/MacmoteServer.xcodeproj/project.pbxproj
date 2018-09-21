@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A092369209D1E9A00B1119F /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A092368209D1E9A00B1119F /* icon.png */; };
-		9A655C0C20B0BD1C0005C97E /* RemoteBackendServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A655C0B20B0BD1C0005C97E /* RemoteBackendServiceManager.swift */; };
+		9A25EBEF215561C2005C10F8 /* RemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A25EBEE215561C2005C10F8 /* RemoteController.swift */; };
 		9AF7E6D2207C2BEF004E3727 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7E6D1207C2BEF004E3727 /* AppDelegate.swift */; };
 		9AF7E6D4207C2BEF004E3727 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7E6D3207C2BEF004E3727 /* ViewController.swift */; };
 		9AF7E6D6207C2BF0004E3727 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7E6D5207C2BF0004E3727 /* Assets.xcassets */; };
@@ -50,7 +50,7 @@
 
 /* Begin PBXFileReference section */
 		9A092368209D1E9A00B1119F /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		9A655C0B20B0BD1C0005C97E /* RemoteBackendServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBackendServiceManager.swift; sourceTree = "<group>"; };
+		9A25EBEE215561C2005C10F8 /* RemoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteController.swift; sourceTree = "<group>"; };
 		9AF7E6CE207C2BEF004E3727 /* MacmoteServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacmoteServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF7E6D1207C2BEF004E3727 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AF7E6D3207C2BEF004E3727 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 				9AF7E6DA207C2BF0004E3727 /* Info.plist */,
 				9AF7E6DB207C2BF0004E3727 /* MacmoteServer.entitlements */,
 				9AF7E6FD207C2C07004E3727 /*  RemoteServiceManager.swift */,
-				9A655C0B20B0BD1C0005C97E /* RemoteBackendServiceManager.swift */,
+				9A25EBEE215561C2005C10F8 /* RemoteController.swift */,
 			);
 			path = MacmoteServer;
 			sourceTree = "<group>";
@@ -284,8 +284,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A655C0C20B0BD1C0005C97E /* RemoteBackendServiceManager.swift in Sources */,
 				9AF7E6D4207C2BEF004E3727 /* ViewController.swift in Sources */,
+				9A25EBEF215561C2005C10F8 /* RemoteController.swift in Sources */,
 				9AF7E6D2207C2BEF004E3727 /* AppDelegate.swift in Sources */,
 				9AF7E6FE207C2C08004E3727 /*  RemoteServiceManager.swift in Sources */,
 			);

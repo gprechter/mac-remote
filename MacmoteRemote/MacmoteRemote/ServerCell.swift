@@ -14,5 +14,5 @@ class ServerCell : UITableViewCell {
     @IBOutlet weak var serverNameLabel: UILabel!
     
     @IBOutlet weak var desktopImage: UIImageView!
-    var peerID : MCPeerID!
+    var device : Device!
 }

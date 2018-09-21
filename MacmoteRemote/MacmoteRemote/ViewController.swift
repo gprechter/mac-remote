@@ -15,9 +15,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var peersLabel: UILabel!
     var isDragging = false
-    var remoteService : RemoteServiceManager = RemoteServiceManager()
-    var timer: Timer?
-    var timer2: Timer?
     let lightImpact = UIImpactFeedbackGenerator(style: .light)
     let mediumImpact = UIImpactFeedbackGenerator(style: .medium)
     let heavyImpact = UIImpactFeedbackGenerator(style: .heavy)
@@ -35,18 +32,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         keyBoardUp = !keyBoardUp
     }
     @IBOutlet var panSpace: UIPanGestureRecognizer!
-    @IBOutlet var gestureRec: UICustomGestureRecognizer!
     @IBOutlet var mediumPress: UILongPressGestureRecognizer!
     @IBOutlet var tapOnce: UITapGestureRecognizer!
     @IBOutlet var tapTwice: UITapGestureRecognizer!
     @IBOutlet weak var keyboard: CustomTextField!
     var connectedDeviceName : String = ""
-    var server : MCPeerID?
+    var remote: Remote?
     var peerData : Data?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        remoteService.delegate = self
         self.keyboard.keyDelegate = self
         self.keyboard.autocorrectionType = .no
         self.keyboard.delegate = self
@@ -55,7 +50,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         tapOnce.require(toFail: tapTwice)
         self.mouseLowerLimit = self.view.frame.height / 2
         self.scrollDivider = self.view.frame.width - self.view.frame.width / 14
-        // Do any additional setup after loading the view, typically from a nib.
         addLine(fromPoint: CGPoint(x: 0, y: self.mouseLowerLimit), toPoint: CGPoint(x: self.view.frame.width, y: self.mouseLowerLimit))
         addLine(fromPoint: CGPoint(x:  self.scrollDivider, y: self.mouseLowerLimit), toPoint: CGPoint(x: self.scrollDivider, y: 0))
         self.keyboard.becomeFirstResponder()
@@ -64,17 +58,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        print(textField.text!)
-        print("SOMETHING HAPPENED")
-        remoteService.send("k"+textField.text!, to: self.server!)
+        remote?.send(string: "k"+textField.text!)
         textField.text = ""
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "toServerSelector" {
-                if let dest = segue.destination as? ServerSelectionViewController {
-                    dest.backgroundImages = self.backgroundImages!
+                if let dest = segue.destination as? ViewController {
+                    dest.remote = self.remote
+                    remote?.delegate = dest
                 }
             }
         }
@@ -96,78 +89,50 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.layer.addSublayer(line)
     }
     
-    func scheduledTimerWithTimeInterval(){
-        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        print("Thing")
-    }
-    
     @IBAction func panned(_ sender: UIPanGestureRecognizer) {
         if self.mouseTouchWithinRange(with: sender) {
             if sender.location(in: self.view).x < self.scrollDivider {
                 if sender.numberOfTouches == 1 {
                     let velocity = sender.velocity(in: self.view)
-                    print("VELOCITY: x:" + String(velocity.x.description) + " y: " + String(velocity.y.description))
                     let xVal = Int(velocity.x.rounded())
                     let yVal = Int(velocity.y.rounded())
-                    print("Sending")
-                    remoteService.stream("mx"+String(xVal / (8))+"y"+String(yVal / (8)))
+                    remote?.send(string: "mx"+String(xVal / (8))+"y"+String(yVal / (8)))
                 } else if sender.numberOfTouches == 2 {
                     let velocity = sender.velocity(in: self.view)
-                    print("VELOCITY: x:" + String(velocity.x.description) + " y: " + String(velocity.y.description))
                     let xVal = Int(velocity.x.rounded())
                     let yVal = Int(velocity.y.rounded())
-                    print("Sending")
-                    remoteService.stream("sx"+String(xVal / (8))+"y"+String(yVal / (8)))
+                    remote?.send(string: "sx"+String(xVal / (8))+"y"+String(yVal / (8)))
                 }
             } else {
                 let velocity = sender.velocity(in: self.view)
-                print("VELOCITY: x:" + String(velocity.x.description) + " y: " + String(velocity.y.description))
                 let xVal = Int(velocity.x.rounded())
                 let yVal = Int(velocity.y.rounded())
-                print("Sending")
-                remoteService.stream("sx"+String(xVal / (8))+"y"+String(yVal / (8)))
+                remote?.send(string: "sx"+String(xVal / (8))+"y"+String(yVal / (8)))
             }
             
         }
         if sender.state == UIGestureRecognizerState.ended {
-            print("ended pan")
-            remoteService.stream("d1")
+            remote?.send(string: "d1")
             isDragging = false
         }
     }
     
     @IBAction func tappedTwice(_ sender: UITapGestureRecognizer) {
-        print("CLICKED Twice")
         if self.mouseTouchWithinRange(with: sender) {
             if !isDragging {
                 lightImpact.impactOccurred()
-                remoteService.stream("c2")
+                remote?.send(string: "c2")
             }
         }
     }
     
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
-        print("CLICKED Once")
         if self.mouseTouchWithinRange(with: sender) {
             if !isDragging {
                 lightImpact.impactOccurred()
-                remoteService.stream("c1")
+                remote?.send(string: "c1")
             }
         }
-    }
-    
-    @objc func reconnectionService(){
-        self.remoteService.connectToPeer(self.server!)
-        if self.peersLabel.text == "Reconnecting...." {
-            self.peersLabel.text? = "Reconnecting"
-        } else {
-            self.peersLabel.text?.append(".")
-        }
-    }
-    
-    @objc func endReconnectionService(){
-        self.timer?.invalidate()
-        self.performSegue(withIdentifier: "toServerSelector", sender: self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -175,19 +140,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //self.view.endEditing(true)
-        /*if let force = touches.first?.force {
-            if force > CGFloat(0) {
-                remoteService.send(code: "c3")
-            } else {
-                //remoteService.send(code: "c1")
-            }
-        }*/
-        print("Deteched touch: ",  touches.count)
-    }
     @IBAction func gestured(_ sender: UIGestureRecognizer) {
-        print("recognized")
+        
     }
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -197,7 +151,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
                         if touch.force >= touch.maximumPossibleForce {
                         } else if touch.force >= 4 && !isDragging {
-                            remoteService.stream("d0")
+                            remote?.send(string: "d0")
                             isDragging = true
                             heavyImpact.impactOccurred()
                             mediumPress.state = UIGestureRecognizerState.cancelled
@@ -211,7 +165,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func longTouch(_ sender: UILongPressGestureRecognizer) {
         if self.mouseTouchWithinRange(with: sender) {
             if sender.state == UIGestureRecognizerState.began && !isDragging {
-                remoteService.stream("c3")
+                remote?.send(string: "c3")
                 mediumImpact.impactOccurred()
                 mediumPress.state = UIGestureRecognizerState.ended
             }
@@ -219,67 +173,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func enterPressed(_ textField: UITextField) -> Bool {
-        remoteService.send("kreturn", to: self.server!)
+        remote?.send(string: "kreturn")
         return false
     }
     
     
 }
 
-extension ViewController : RemoteServiceManagerDelegate {
-    func connectedToPeer(peer: MCPeerID) {
-        if self.remoteService.openStream(with: peer) {
-            self.server = peer
-            self.timer?.invalidate()
-            self.timer2?.invalidate()
-            DispatchQueue.main.async {
-                self.peersLabel.text = peer.displayName
-            }
-            
+extension ViewController : RemoteDelegate {
+    func serviceBegan(with device: Device) {
+    }
+    
+    func stateUpdated() {
+        if let isAvailable = remote?.availableDevices.contains(where: {$0.peerID == remote?.device?.peerID}), !isAvailable {
+            self.performSegue(withIdentifier: "toServerSelector", sender: self)
         }
     }
     
-    func disconnectedFromPeer(peer: MCPeerID) {
-        self.remoteService.session.disconnect()
-        self.remoteService = RemoteServiceManager()
-        self.remoteService.delegate = self
-        DispatchQueue.main.async {
-            self.peersLabel.text = "Reconnecting"
-            self.timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(self.reconnectionService), userInfo: nil, repeats: true)
-            self.timer2 = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.endReconnectionService), userInfo: nil, repeats: false)
-        }
-    
+    func recieved(data: Data) {
         
     }
-    
-    
-    func pushCode(manager: RemoteServiceManager, codeRecieved: String) {
-        OperationQueue.main.addOperation {
-            
-        }
-    }
-    
-    func connectedDevicesChanged(manager: RemoteServiceManager, connectedDevices: [String]) {
-        OperationQueue.main.addOperation {
-            //self.peersLabel.text = "Connections: \(connectedDevices)"
-        }
-    }
-    
-    func lostPeer(manager: RemoteServiceManager, peer: MCPeerID) {
-    }
-    
-    func recievedResource(from: MCPeerID, url: URL?) {
-        
-        //self.image.image = UIImage(data: try! Data(contentsOf: url!))
-    }
-    
 }
 
 extension ViewController : KeyboardDelegate {
-    
     func keyPress(string: String) {
-        print("Sending: ", string)
-        remoteService.send("k" + string, to: self.server!)
+        remote?.send(string: "k" + string)
     }
 }
 

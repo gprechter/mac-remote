@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AtW-fc-aCW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AtW-fc-aCW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,7 +55,7 @@
                         <viewLayoutGuide key="safeArea" id="0jd-0e-2ZX"/>
                     </view>
                     <connections>
-                        <outlet property="peerTable" destination="A8X-T3-hM3" id="gjt-Cb-qqI"/>
+                        <outlet property="deviceTable" destination="A8X-T3-hM3" id="bC2-EX-5Yf"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="presentMouse" id="qPc-IL-jai"/>
                     </connections>
                 </viewController>
@@ -113,7 +113,6 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="gestureRec" destination="U2L-UN-MjB" id="8oh-HE-04T"/>
                         <outlet property="keyboard" destination="uPa-9c-qmI" id="rcD-aw-Dsf"/>
                         <outlet property="mediumPress" destination="j7I-jb-Wiu" id="cJx-Px-bkc"/>
                         <outlet property="panSpace" destination="oGg-UF-NdH" id="QKo-ed-svw"/>
@@ -144,11 +143,6 @@
                         <action selector="longTouch:" destination="BYZ-38-t0r" id="BRy-LH-IM5"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <gestureRecognizer id="U2L-UN-MjB" customClass="UICustomGestureRecognizer" customModule="MacmoteRemote" customModuleProvider="target">
-                    <connections>
-                        <action selector="gestured:" destination="BYZ-38-t0r" id="BHj-cE-5t0"/>
-                    </connections>
-                </gestureRecognizer>
             </objects>
             <point key="canvasLocation" x="37.600000000000001" y="84.107946026986511"/>
         </scene>

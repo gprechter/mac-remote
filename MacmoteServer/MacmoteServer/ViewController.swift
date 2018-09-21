@@ -169,12 +169,13 @@ extension ViewController : RemoteServiceManagerDelegate {
     
     func pushCode(manager: RemoteServiceManager, code: String) {
         //OperationQueue.main.addOperation {
-            print("MOVE MOUSE: ",code)
-            if code.prefix(1) == "m" {
-                if let xIndex = code.index(of: "x") {
-                    if let yIndex = code.index(of: "y") {
-                        if let xAmm = Int(code.suffix(from: code.index(after: xIndex)).prefix(upTo: yIndex)){
-                            if let yAmm = Int(code.suffix(from: code.index(after: yIndex)).prefix(upTo: code.index(of: " ")!)) {
+        let message = code.prefix(upTo: code.lastIndex(of: "_")!)
+            print("MOVE MOUSE: ",message)
+            if message.prefix(1) == "m" {
+                if let xIndex = message.index(of: "x") {
+                    if let yIndex = message.index(of: "y") {
+                        if let xAmm = Int(message.suffix(from: message.index(after: xIndex)).prefix(upTo: yIndex)){
+                            if let yAmm = Int(message.suffix(from: message.index(after: yIndex))) {
                                 self.change(x: xAmm, y: yAmm)
                                 print(xAmm, "   ", yAmm)
                             }
@@ -182,9 +183,9 @@ extension ViewController : RemoteServiceManagerDelegate {
                         
                     }
                 }
-            } else if code.prefix(1) == "c" {
+            } else if message.prefix(1) == "c" {
                 print("CLICK")
-                if let clickType = Int(code.suffix(from: code.index(after: code.index(of: "c")!)).prefix(1)) {
+                if let clickType = Int(message.suffix(from: message.index(after: message.index(of: "c")!)).prefix(1)) {
                     if clickType == 1 {
                         self.click(type: 1)
                         self.forcePress = false
@@ -194,21 +195,21 @@ extension ViewController : RemoteServiceManagerDelegate {
                         self.click(type: 3)
                     }
                 }
-            } else if code.prefix(1) == "d" {
+            } else if message.prefix(1) == "d" {
                 print("DRAG")
-                if let clickType = Int(code.suffix(from: code.index(after: code.index(of: "d")!)).prefix(1)) {
+                if let clickType = Int(message.suffix(from: message.index(after: message.index(of: "d")!)).prefix(1)) {
                     if clickType == 0 {
                         self.beginDragging()
                     } else if clickType == 1 {
                         self.endDrag()
                     }
                 }
-            } else if code.prefix(1) == "s" {
+            } else if message.prefix(1) == "s" {
                 print("SCROLL")
-                if let xIndex = code.index(of: "x") {
-                    if let yIndex = code.index(of: "y") {
-                        if let xAmm = Int(code.suffix(from: code.index(after: xIndex)).prefix(upTo: yIndex)){
-                            if let yAmm = Int(code.suffix(from: code.index(after: yIndex)).prefix(upTo: code.index(of: " ")!)) {
+                if let xIndex = message.index(of: "x") {
+                    if let yIndex = message.index(of: "y") {
+                        if let xAmm = Int(message.suffix(from: message.index(after: xIndex)).prefix(upTo: yIndex)){
+                            if let yAmm = Int(message.suffix(from: message.index(after: yIndex))) {
                                 self.scroll(x: xAmm, y: yAmm)
                                 print(xAmm, "   ", yAmm)
                             }
@@ -216,9 +217,9 @@ extension ViewController : RemoteServiceManagerDelegate {
                         
                     }
                 }
-            } else if code.prefix(1) == "k" {
+            } else if message.prefix(1) == "k" {
                 print("KEYPRESS")
-                let key = String(code.suffix(from: code.index(after: code.index(of: "k")!)))
+                let key = String(message.suffix(from: message.index(after: message.index(of: "k")!)))
                 self.keyPress(key: key)
                 
             }

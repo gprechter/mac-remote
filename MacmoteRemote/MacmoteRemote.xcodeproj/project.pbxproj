@@ -10,7 +10,7 @@
 		9A03D2CD20893DD700416ABF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03D2CC20893DD700416ABF /* CustomTextField.swift */; };
 		9A64E9CD208AC7140008720D /* ServerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A64E9CC208AC7140008720D /* ServerSelectionViewController.swift */; };
 		9A64E9CF208B93E70008720D /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A64E9CE208B93E70008720D /* ServerCell.swift */; };
-		9A655C0A20B0BAB50005C97E /* RemoteBackendServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A655C0920B0BAB50005C97E /* RemoteBackendServiceManager.swift */; };
+		9AC3094D2154BA9D006D8211 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC3094C2154BA9D006D8211 /* Remote.swift */; };
 		9AC358E1207D10660011FA3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC358E0207D10660011FA3C /* AppDelegate.swift */; };
 		9AC358E3207D10660011FA3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC358E2207D10660011FA3C /* ViewController.swift */; };
 		9AC358E6207D10660011FA3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC358E4207D10660011FA3C /* Main.storyboard */; };
@@ -19,7 +19,6 @@
 		9AC358F6207D10670011FA3C /* MacmoteRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC358F5207D10670011FA3C /* MacmoteRemoteTests.swift */; };
 		9AC35901207D10670011FA3C /* MacmoteRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC35900207D10670011FA3C /* MacmoteRemoteUITests.swift */; };
 		9AC3590F207D10CF0011FA3C /* RemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC3590E207D10CF0011FA3C /* RemoteServiceManager.swift */; };
-		9ACF267B2086C62E00829533 /* UICustomGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF267A2086C62E00829533 /* UICustomGestureRecognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +42,7 @@
 		9A03D2CC20893DD700416ABF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		9A64E9CC208AC7140008720D /* ServerSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSelectionViewController.swift; sourceTree = "<group>"; };
 		9A64E9CE208B93E70008720D /* ServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
-		9A655C0920B0BAB50005C97E /* RemoteBackendServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBackendServiceManager.swift; sourceTree = "<group>"; };
+		9AC3094C2154BA9D006D8211 /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		9AC358DD207D10660011FA3C /* MacmoteRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacmoteRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC358E0207D10660011FA3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AC358E2207D10660011FA3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,7 +57,6 @@
 		9AC35900207D10670011FA3C /* MacmoteRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacmoteRemoteUITests.swift; sourceTree = "<group>"; };
 		9AC35902207D10670011FA3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AC3590E207D10CF0011FA3C /* RemoteServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteServiceManager.swift; sourceTree = "<group>"; };
-		9ACF267A2086C62E00829533 /* UICustomGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomGestureRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +113,9 @@
 				9AC358E4207D10660011FA3C /* Main.storyboard */,
 				9A64E9CC208AC7140008720D /* ServerSelectionViewController.swift */,
 				9A64E9CE208B93E70008720D /* ServerCell.swift */,
-				9ACF267A2086C62E00829533 /* UICustomGestureRecognizer.swift */,
 				9AC358E7207D10670011FA3C /* Assets.xcassets */,
 				9AC3590E207D10CF0011FA3C /* RemoteServiceManager.swift */,
-				9A655C0920B0BAB50005C97E /* RemoteBackendServiceManager.swift */,
+				9AC3094C2154BA9D006D8211 /* Remote.swift */,
 				9AC358E9207D10670011FA3C /* LaunchScreen.storyboard */,
 				9AC358EC207D10670011FA3C /* Info.plist */,
 			);
@@ -276,9 +273,8 @@
 			files = (
 				9AC358E3207D10660011FA3C /* ViewController.swift in Sources */,
 				9AC3590F207D10CF0011FA3C /* RemoteServiceManager.swift in Sources */,
-				9ACF267B2086C62E00829533 /* UICustomGestureRecognizer.swift in Sources */,
 				9AC358E1207D10660011FA3C /* AppDelegate.swift in Sources */,
-				9A655C0A20B0BAB50005C97E /* RemoteBackendServiceManager.swift in Sources */,
+				9AC3094D2154BA9D006D8211 /* Remote.swift in Sources */,
 				9A64E9CD208AC7140008720D /* ServerSelectionViewController.swift in Sources */,
 				9A64E9CF208B93E70008720D /* ServerCell.swift in Sources */,
 				9A03D2CD20893DD700416ABF /* CustomTextField.swift in Sources */,

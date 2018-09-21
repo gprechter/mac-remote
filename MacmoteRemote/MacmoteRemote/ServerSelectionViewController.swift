@@ -13,24 +13,14 @@ import MultipeerConnectivity
 
 class ServerSelectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var peerTable: UITableView!
-    var isDragging = false
-    var remoteService : RemoteServiceManager?
-    var timer = Timer()
-    var currentDevice : MCPeerID?
-    
-    var backgroundImages : [String:URL] = [:]
-    
-    var backendManager = RemoteBackendServiceManager()
+    @IBOutlet weak var deviceTable: UITableView!
+    var remote = Remote()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backendManager.delegate = self
-        peerTable.delegate = self
-        peerTable.dataSource = self
-        self.remoteService = RemoteServiceManager()
-        remoteService!.delegate = self
-        scheduledTimerWithTimeInterval()
+        deviceTable.delegate = self
+        deviceTable.dataSource = self
+        remote.delegate = self
         
     }
     
@@ -38,54 +28,30 @@ class ServerSelectionViewController: UIViewController, UITableViewDelegate, UITa
         if let identifier = segue.identifier {
             if identifier == "presentMouse" {
                 if let dest = segue.destination as? ViewController {
-                    dest.remoteService = self.remoteService!
-                    dest.server = self.currentDevice!
-                    dest.connectedDeviceName = self.currentDevice!.displayName
-                    dest.backgroundImages = self.backgroundImages
-                    self.remoteService = nil
+                    dest.remote = self.remote
+                    remote.delegate = dest
                 }
             }
         }
     }
-    
-    func scheduledTimerWithTimeInterval(){
-        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCounting), userInfo: nil, repeats: true)
-    }
-    
-    @objc func updateCounting(){
-        self.peerTable.reloadData()
-    }
-    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("LOADING TABLE VIEW")
-        if let service = remoteService {
-            return service.accessiblePeers.count
-        }
-        return 0
+        return remote.availableDevices.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("loading table view")
-        let peerID = self.remoteService!.accessiblePeers[indexPath.row]
-        if (self.backgroundImages.keys.contains(peerID.displayName)) {
-            print("Loading image")
-            let cell = tableView.dequeueReusableCell(withIdentifier: "default", for: indexPath) as! ServerCell
-            cell.peerID = peerID
-            cell.serverNameLabel.text = cell.peerID.displayName
+        let device = self.remote.availableDevices[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "default", for: indexPath) as! ServerCell
+        cell.serverNameLabel.text = device.peerID?.displayName
+        if let image = device.image {
             cell.serverNameLabel.textColor = .white
-            cell.desktopImage.image = UIImage(data: try! Data(contentsOf: self.backgroundImages[peerID.displayName]!))
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "default", for: indexPath) as! ServerCell
-            cell.peerID = peerID
-            cell.serverNameLabel.text = cell.peerID.displayName
-            return cell
+            cell.desktopImage.image = image
         }
+        cell.device = device
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.remoteService!.connectToPeer((tableView.cellForRow(at: indexPath) as! ServerCell).peerID)
+        self.remote.service(remote: (tableView.cellForRow(at: indexPath) as! ServerCell).device)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -99,37 +65,17 @@ class ServerSelectionViewController: UIViewController, UITableViewDelegate, UITa
     }
 }
 
-extension ServerSelectionViewController : RemoteServiceManagerDelegate {
-    
-    
-    func pushCode(manager: RemoteServiceManager, codeRecieved: String) {
-        OperationQueue.main.addOperation {
-            
-        }
+extension ServerSelectionViewController : RemoteDelegate {
+    func serviceBegan(with device: Device) {
+        performSegue(withIdentifier: "presentMouse", sender: self)
     }
     
-    func connectedDevicesChanged(manager: RemoteServiceManager, connectedDevices: [String]) {
+    func stateUpdated() {
+        self.deviceTable.reloadData()
     }
     
-    func connectedToPeer(peer: MCPeerID) {
-        if self.remoteService!.openStream(with: peer) {
-            self.currentDevice = peer
-            performSegue(withIdentifier: "presentMouse", sender: self)
-        }
-    }
-    
-    func disconnectedFromPeer(peer: MCPeerID) {
-    }
-    
-    func recievedResource(from: MCPeerID, url: URL?) {
-    }
-    
-}
-
-extension ServerSelectionViewController : RemoteBackendServiceManagerDelegate {
-    func sendDesktopImage(for peer: MCPeerID, url: URL) {
-        self.backgroundImages[peer.displayName] = url
-        NSLog("%@", "Recieved resource from: \(peer.displayName)")
+    func recieved(data: Data) {
+        
     }
 }
 

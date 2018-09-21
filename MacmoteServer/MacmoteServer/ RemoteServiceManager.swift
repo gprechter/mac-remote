@@ -13,39 +13,32 @@ class RemoteServiceManager : NSObject {
     
     private let SERVICE_TYPE = "macmote"
     private let myPeerId = MCPeerID(displayName: Host.current().localizedName ?? "")
-    private let serviceAdvertiser : MCNearbyServiceAdvertiser
     private let serviceBrowser : MCNearbyServiceBrowser
-    var backendManager = RemoteBackendServiceManager()
     
     var delegate : RemoteServiceManagerDelegate?
     
     override init() {
-        self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: ["deviceType": "SERVER", "password": "hidukens"], serviceType: SERVICE_TYPE)
         self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: SERVICE_TYPE)
         
         super.init()
-        
-        self.serviceAdvertiser.delegate = self
-        self.serviceAdvertiser.startAdvertisingPeer()
         
         self.serviceBrowser.delegate = self
         self.serviceBrowser.startBrowsingForPeers()
     }
     
     deinit {
-        self.serviceAdvertiser.stopAdvertisingPeer()
+        self.serviceBrowser.stopBrowsingForPeers()
     }
     
-    func send(code : String) {
-        if session.connectedPeers.count > 0 {
+    func send(_ message: String, to peer: MCPeerID) {
+        if self.session.connectedPeers.contains(peer) {
             do {
-                try self.session.send(code.data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
-            }
-            catch let error {
-                NSLog("%@", "Error for sending: \(error)")
+                try self.session.send(message.data(using: .utf8)!, toPeers: [peer], with: .reliable)
+                NSLog("%@", "Sending message: \(message) to \(peer.displayName)")
+            } catch let error {
+                NSLog("%@", "Session encountered an error when sending message: \(error)")
             }
         }
-        
     }
     
     lazy var session : MCSession = {
@@ -53,19 +46,6 @@ class RemoteServiceManager : NSObject {
         session.delegate = self
         return session
     }()
-    
-}
-
-extension RemoteServiceManager : MCNearbyServiceAdvertiserDelegate {
-    
-    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
-        NSLog("%@", "didNotStartAdvertisingPeer: \(error)")
-    }
-    
-    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        NSLog("%@", "didReceiveInvitationFromPeer \(peerID)")
-        invitationHandler(true, self.session)
-    }
     
 }
 
@@ -78,7 +58,7 @@ extension RemoteServiceManager : MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         NSLog("%@", "foundPeer: \(peerID)")
         NSLog("%@", "invitePeer: \(peerID)")
-        //browser.invitePeer(peerID, to: self.session, withContext: nil, timeout: 10)
+        browser.invitePeer(peerID, to: self.session, withContext: "SERVER".data(using: .utf8)!, timeout: 10)
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
@@ -114,7 +94,15 @@ extension RemoteServiceManager : MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         NSLog("%@", "peer \(peerID) didChangeState: \(state)")
         self.delegate?.connectedDevicesChanged(manager: self, connectedDevices:
-            session.connectedPeers.map{$0.displayName})    
+            session.connectedPeers.map{$0.displayName})
+        switch state {
+        case .connected:
+            self.session.sendResource(at: NSWorkspace.shared.desktopImageURL(for: NSScreen.main!)!, withName: "backgroundImage", toPeer: peerID, withCompletionHandler: nil)
+        case .connecting:
+            print("Connecting")
+        case .notConnected:
+            print("Disconnected")
+        }
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
@@ -125,7 +113,6 @@ extension RemoteServiceManager : MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        print("ESTABLISHED STREAM")
         stream.delegate = self
         stream.schedule(in: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
         stream.open()
